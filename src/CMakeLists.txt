@@ -1,0 +1,16 @@
+set(FOO_SRC
+	foo.c
+)
+
+include_directories(
+	"${PROJECT_SOURCE_DIR}/inc"
+)
+
+add_library(${PROJECT_NAME}-shared SHARED ${FOO_SRC})
+set_target_properties(${PROJECT_NAME}-shared PROPERTIES
+	OUTPUT_NAME	${PROJECT_NAME}
+	SOVERSION	${PACKAGE_MAJOR_VERSION}
+	VERSION		${PACKAGE_VERSION}
+)
+install(TARGETS ${PROJECT_NAME}-shared EXPORT ${PROJECT_NAME}-targets LIBRARY DESTINATION "lib" )
+install(EXPORT ${PROJECT_NAME}-targets DESTINATION "lib/cmake/${PROJECT_NAME}")
