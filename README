@@ -1,0 +1,3 @@
+This lib actually does nothing but a "hello world". It's used to
+reproduce some problems with CMake and transitive linking of shared
+libraries.
