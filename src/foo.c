@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 void foo_hello( void ) {
-	(void) puts( "This is foo library speaking." );
+	(void) puts( "foo: This is foo library speaking." );
 }
 
 /* vim: set noet sts=0 ts=4 sw=4 sr: */
