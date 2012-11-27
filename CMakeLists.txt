@@ -2,17 +2,21 @@ project(foo)
 
 cmake_minimum_required(VERSION 2.8.8)
 
+# package version
 set(PACKAGE_MAJOR_VERSION "0")
 set(PACKAGE_MINOR_VERSION "1")
 set(PACKAGE_BUILD_VERSION "0")
 set(PACKAGE_VERSION "${PACKAGE_MAJOR_VERSION}.${PACKAGE_MINOR_VERSION}.${PACKAGE_BUILD_VERSION}")
 
-include(GNUInstallDirs)	# cmake 2.8.5
+# include modules
+include(CMakePackageConfigHelpers)	# cmake 2.8.8
+include(GNUInstallDirs)				# cmake 2.8.5
 
+# add subdirectories (creating targets)
 add_subdirectory("inc")
 add_subdirectory("src")
 
-include(CMakePackageConfigHelpers)	# cmake 2.8.8
+# write cmake package config scripts (after targets created)
 configure_package_config_file(foo-config.cmake.in
 	"${CMAKE_CURRENT_BINARY_DIR}/foo-config.cmake"
 	INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
